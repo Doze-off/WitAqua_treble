@@ -1,20 +1,83 @@
+<div align="center">
+  <a href="https://witaqua.org/">
+    <img src="https://witaqua.org/witaqua.svg" width="70%" />
+  </a>
+</div>
+
+
 WitAqua
 ===========
 
-Getting started
+Getting Started
 ---------------
 
-To get started with Android/WitAqua, you'll need to get familiar with [Source Control Tools](https://source.android.com/setup/develop).
 
-To initialize your local repository using the WitAqua trees, use a command like this:
+You'll need to get familiar with [Git and Repo](https://source.android.com/source/using-repo.html) as well as [How to build a GSI](https://github.com/phhusson/treble_experimentations/wiki/How-to-build-a-GSI%3F).
+
+
+
+Building the GSI
+---------------
+
+**Create the directory**
+```bash
+mkdir witaqua
+cd witaqua
 ```
+
+**To initialize your local repository using the Infinity source, use a command like this:**
+
+```bash
 repo init -u https://github.com/WitAqua/manifest.git -b 16.0 --git-lfs
 ```
-Then to sync up:
-```
-repo sync
+**Sync up with this command:**
+```bash
+repo sync -j48
 ```
 
-Submitting patches
-------------------
-Patches are always welcome! Please submit your patches via Pull Request!
+---------------
+**clone all repo** 
+
+```bash
+git clone https://github.com/TrebleDroid/vendor_interfaces -b android-15.0 vendor/interfaces
+
+git clone https://github.com/TrebleDroid/device_phh_treble -b android-15.0 device/phh/treble
+
+git clone https://github.com/TrebleDroid/treble_app -b master treble_app
+
+git clone https://github.com/AndyCGYan/android_packages_apps_QcRilAm -b master packages/apps/QcRilAm
+
+git clone https://github.com/TrebleDroid/vendor_hardware_overlay -b pie vendor/hardware_overlay
+
+git clone https://android.googlesource.com/platform/prebuilts/vndk/v28  prebuilts/vndk/v28
+
+git clone https://android.googlesource.com/platform/prebuilts/vndk/v29 prebuilts/vndk/v29
+
+git clone https://github.com/ponces/treble_adapter -b master treble_adapter
+
+git clone https://github.com/Doze-off/patches.git -b patches-16 patches
+```
+
+---------------
+Move the **apply-patches.sh** script inside the patches folder to the **main folder**
+
+**Use the command:**
+```bash
+bash apply-patches.sh ~/witaqua
+```
+**Note:** if some patches fail, you have to apply them manually
+
+
+---------------
+Move the files **AndroidProducts.mk, wit.mk, witaqua_gsi.mk** to folder, **device/phh/treble**
+
+**Compilation: Follow the commands**
+```bash
+source build/envsetup.sh
+lunch witaqua_gsi-bp2a-userdebug
+m systemimage -j48
+```
+**Compress:**
+```bash
+xz -9 -T0 -v -z out/target/product/tdgsi_arm64_ab/system.img
+```
