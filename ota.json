@@ -1,0 +1,24 @@
+{
+  "version": "2025-08-10",
+  "date": "1754675869",
+  "gsi": "WitAqua Official | by Doze-off",
+  "security_patch": "2025-08-05",
+  "changelog": "https://raw.githubusercontent.com/Doze-off/WitAqua_treble/16.0/changelog.txt",
+  "variants": [
+    {
+      "name": "witaqua_gsi_gapps",
+      "size": "1174066240",
+      "url": "https://github.com/Doze-off/WitAqua_treble/releases/download/2025-08-10/WitAqua-3.0_GSI_treble_arm64-ab_GAPPS-Official-20250810.img.xz"
+    },
+    {
+      "name": "witaqua_gsi_vanilla",
+      "size": "1017343444",
+      "url": "https://github.com/Doze-off/WitAqua_treble/releases/download/2025-08-10/WitAqua-3.0_GSI_treble_arm64-ab_VANILLA-Official-20250810.img.xz"
+    },
+    {
+      "name": "witaqua_a64_vanilla",
+      "size": "816880892",
+      "url": "https://github.com/Doze-off/WitAqua_treble/releases/download/2025-08-10/WitAqua-3.0_GSI_treble_arm32_binder64-ab_VANILLA-Official-20250810.img.xz"
+    }
+  ]
+}
